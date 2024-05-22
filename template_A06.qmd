@@ -185,7 +185,18 @@ ie: 91 rounds to 90; 173 rounds to 200; 1450 rounds to 1000
 Hint: use `MARGIN = 1:2` to apply the function to each value instead of only a row/col.
 
 ```{r}
-
+rounding<-function(x){
+  digits<-nchar(as.character(abs(x)))
+  if(digits<=2){
+    round(x,-1)
+  }else if(digits<=3){
+    round(x,-2)
+  }else if(digits<=4){
+    round(x,-3)
+  }
+}
+round_num<-apply(mat_rand, MARGIN = 1:2, rounding)
+round_num
 ```
 
 
@@ -202,6 +213,8 @@ download.file(url = temp_url, destfile = temp_file)
 
 max_temps <- read_tsv("state_max_temps.tsv") |> 
   janitor::clean_names()
+
+
 ```
 
 ### Part a (2 points)
