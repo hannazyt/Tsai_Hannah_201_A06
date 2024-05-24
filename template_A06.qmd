@@ -163,7 +163,7 @@ Use the list created in Part c and an appropriate apply function to round each v
 Store the output as a vector and print the results.
 
 ```{r}
-round_points<-lapply(points_per_game, function(x){round(x, 2)})
+round_points<-sapply(points_per_game, function(x){round(x, 2)})
 round_points
 ```
 
@@ -222,7 +222,8 @@ max_temps <- read_tsv("state_max_temps.tsv") |>
 Calculate the average temperature for each month across the whole data frame (using the data for all three states together).
 
 ```{r}
-
+average_temp<-apply(max_temps[, 3:14], 2, mean)
+average_temp
 ```
 
 
@@ -237,7 +238,9 @@ Create three new data frames by slicing the data by state.
 No need to print any output here.
 
 ```{r}
-
+colorado_temp<-max_temps[max_temps$state=="CO", ]
+ohio_temp<-max_temps[max_temps$state=="OH", ]
+virginia_temp<-max_temps[max_temps$state=="VA", ]
 ```
 
 
